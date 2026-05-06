@@ -62,8 +62,7 @@ export function Sidebar({ userRole, userName, userEmail }: Props) {
         <img
           src="/logo.jpg"
           alt="Stagnum"
-          className="h-14 w-auto object-contain"
-          style={{ filter: 'brightness(0) invert(1)' }}
+          className="h-16 w-auto object-contain"
         />
       </div>
 
