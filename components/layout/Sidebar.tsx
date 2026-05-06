@@ -57,18 +57,14 @@ export function Sidebar({ userRole, userName, userEmail }: Props) {
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-60 flex flex-col bg-obsidian border-r border-charcoal">
       {/* Logo */}
-      <div className="flex h-14 items-center gap-3 px-4 border-b border-charcoal">
+      <div className="flex h-20 items-center justify-center border-b border-charcoal px-4">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/logo.jpg"
           alt="Stagnum"
-          className="h-8 w-8 object-contain shrink-0"
+          className="h-14 w-auto object-contain"
           style={{ filter: 'brightness(0) invert(1)' }}
         />
-        <div>
-          <p className="text-limestone text-sm font-semibold leading-none tracking-wide">STAGNUM</p>
-          <p className="text-concrete text-[10px] leading-none mt-0.5 tracking-widest uppercase">Operations</p>
-        </div>
       </div>
 
       {/* Navigation */}
