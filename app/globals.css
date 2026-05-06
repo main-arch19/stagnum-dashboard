@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ── Stagnum Brand Palette ── */
+  --color-obsidian: #141414;
+  --color-limestone: #F2F0EB;
+  --color-gold: #C9A227;
+  --color-steel: #5C6670;
+  --color-charcoal: #2A2A2A;
+  --color-concrete: #9BA3AB;
+
+  /* ── Semantic Status Colors ── */
+  --color-blocked: #DC2626;
+  --color-warning: #F59E0B;
+  --color-cleared: #16A34A;
+  --color-progress: #2563EB;
+
+  /* ── Shadcn token mappings (dark-themed defaults for this dashboard) ── */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+
+  /* ── Typography ── */
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+:root {
+  /* Stagnum uses Limestone as content background, Obsidian for structural elements */
+  --background: #F2F0EB;          /* Limestone */
+  --foreground: #141414;          /* Obsidian */
+  --card: #FFFFFF;
+  --card-foreground: #141414;
+  --popover: #FFFFFF;
+  --popover-foreground: #141414;
+  --primary: #C9A227;             /* Forged Gold — CTAs */
+  --primary-foreground: #141414;
+  --secondary: #F2F0EB;
+  --secondary-foreground: #2A2A2A;
+  --muted: #E8E6E1;
+  --muted-foreground: #5C6670;    /* Steel */
+  --accent: #C9A227;
+  --accent-foreground: #141414;
+  --destructive: #DC2626;
+  --border: #D4D1CB;
+  --input: #FFFFFF;
+  --ring: #C9A227;
+  --radius: 0.375rem;
+
+  /* Sidebar uses Obsidian */
+  --sidebar: #141414;
+  --sidebar-foreground: #F2F0EB;
+  --sidebar-primary: #C9A227;
+  --sidebar-primary-foreground: #141414;
+  --sidebar-accent: #2A2A2A;
+  --sidebar-accent-foreground: #F2F0EB;
+  --sidebar-border: #2A2A2A;
+  --sidebar-ring: #C9A227;
+
+  /* Charts */
+  --chart-1: #C9A227;
+  --chart-2: #2563EB;
+  --chart-3: #16A34A;
+  --chart-4: #F59E0B;
+  --chart-5: #DC2626;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-limestone text-obsidian font-sans antialiased;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  /* Tabular numbers for all financial/numeric data */
+  .tabular-data {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* Smooth scrollbars */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: #5C6670;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #9BA3AB; }
+}
+
+/* ── Gate Status Indicators ── */
+.gate-locked   { @apply text-blocked; }
+.gate-unlocked { @apply text-cleared; }
+.gate-bypassed { @apply text-warning; }
+
+/* ── Status Badge Variants ── */
+.badge-blocked   { background: #FEF2F2; color: #DC2626; border-color: #FECACA; }
+.badge-warning   { background: #FFFBEB; color: #B45309; border-color: #FDE68A; }
+.badge-cleared   { background: #F0FDF4; color: #16A34A; border-color: #BBF7D0; }
+.badge-progress  { background: #EFF6FF; color: #2563EB; border-color: #BFDBFE; }
+.badge-neutral   { background: #F9FAFB; color: #5C6670; border-color: #E5E7EB; }
+
+/* ── Brand Grid Pattern (for auth page background) ── */
+.brand-grid {
+  background-image:
+    linear-gradient(rgba(201, 162, 39, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 162, 39, 0.10) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── KPI Card Top-Border Accents ── */
+/* Declared outside @layer so they sit above @layer utilities in cascade priority */
+.kpi-accent-progress { border-top-color: #2563EB; }
+.kpi-accent-cleared  { border-top-color: #16A34A; }
+.kpi-accent-warning  { border-top-color: #F59E0B; }
+.kpi-accent-blocked  { border-top-color: #DC2626; }
+.kpi-accent-gold     { border-top-color: #C9A227; }
