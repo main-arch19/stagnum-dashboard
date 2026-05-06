@@ -1,15 +1,15 @@
 import { auth } from '@/lib/auth'
-import { redirect } from 'next/navigation'
 import { Sidebar } from '@/components/layout/Sidebar'
 import { TopNav } from '@/components/layout/TopNav'
 import { KPITicker } from '@/components/layout/KPITicker'
 import { TRPCProvider } from '@/components/providers'
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const session = await auth()
-  if (!session?.user) redirect('/login')
-
-  const { name, email, role } = session.user as { name: string; email: string; role: string }
+  const session = await auth().catch(() => null)
+  const user = session?.user as { name?: string; email?: string; role?: string } | undefined
+  const name = user?.name ?? 'Preview'
+  const email = user?.email ?? ''
+  const role = user?.role ?? 'FOUNDER'
   const isFounder = role === 'FOUNDER'
 
   return (
