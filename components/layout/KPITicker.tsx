@@ -11,15 +11,15 @@ type KPIItem = {
   raw?: number
 }
 
-// Placeholder KPIs — replaced by SSE stream once /api/sse/kpi is wired
+// Sample KPIs — replaced by SSE stream once /api/sse/kpi is wired
 const PLACEHOLDER_KPIS: KPIItem[] = [
-  { label: 'Active Projects', value: '—', trend: 'neutral' },
-  { label: 'Contract Value (JMD)', value: '—', trend: 'neutral' },
-  { label: 'Outstanding Invoices', value: '—', trend: 'warn' },
-  { label: 'Overdue Payments', value: '—', trend: 'down' },
-  { label: 'Gates Locked', value: '—', trend: 'warn' },
-  { label: 'Pending Approvals', value: '—', trend: 'warn' },
-  { label: 'Stale Rates', value: '—', trend: 'warn' },
+  { label: 'Active Projects', value: '7', trend: 'up' },
+  { label: 'Contract Value (JMD)', value: 'J$385.8M', trend: 'up' },
+  { label: 'Outstanding Invoices', value: '3 invoices', trend: 'warn' },
+  { label: 'Overdue Payments', value: 'J$14.4M', trend: 'down' },
+  { label: 'Gates Locked', value: '2', trend: 'warn' },
+  { label: 'Pending Approvals', value: '4 items', trend: 'warn' },
+  { label: 'Stale Rates', value: '8 rates', trend: 'warn' },
 ]
 
 export function KPITicker() {
